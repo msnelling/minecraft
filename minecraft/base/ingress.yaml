@@ -1,5 +1,5 @@
 apiVersion: traefik.io/v1alpha1
-kind: IngressRoute
+kind: IngressRouteUDP
 metadata:
   name: minecraft-bedrock-1
   labels:
