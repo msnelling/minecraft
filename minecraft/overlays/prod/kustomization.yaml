@@ -6,7 +6,7 @@ labels:
       variant: prod
 images:
   - name: itzg/minecraft-bedrock-server
-    newTag: '2024.1.0'
+    newTag: 'latest'
 resources:
   - ../../base
 patches:
