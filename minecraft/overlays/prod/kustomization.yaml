@@ -5,7 +5,7 @@ labels:
     pairs:
       variant: prod
 images:
-  - name: itzg/minecraft-bedrock-server
+  - name: docker.io/itzg/minecraft-bedrock-server
     newTag: 'latest'
 resources:
   - ../../base
@@ -14,8 +14,7 @@ patches:
       - op: add
         path: /metadata/annotations
         value:
-          cfargotunnel.com/cluster-tunnel: k3s-xmple-io
-          cfargotunnel.com/fqdn: minecraft.xmple.io
+          kube-vip.io/loadbalancerIPs: 10.1.1.48
     target:
       version: v1
       kind: Service

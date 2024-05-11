@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: minecraft-bedrock
-          image: itzg/minecraft-bedrock-server
+          image: docker.io/itzg/minecraft-bedrock-server
           imagePullPolicy: Always
           resources:
             requests:
