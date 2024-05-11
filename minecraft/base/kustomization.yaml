@@ -5,6 +5,7 @@ commonLabels:
   app.kubernetes.io/part-of: minecraft
 resources:
   - storage.yaml
+  - config.yaml
   - deployment.yaml
   - service.yaml
   - ingress.yaml

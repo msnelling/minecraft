@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: minecraft-bedrock-1-config
+  labels:
+    app.kubernetes.io/name: minecraft-bedrock-1
+data:
+  EULA: 'true'
+  GAMEMODE: 'creative'
+  LEVEL_TYPE: 'default'
+  DIFFICULTY: 'easy'

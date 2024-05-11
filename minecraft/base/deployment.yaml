@@ -25,6 +25,9 @@ spec:
           env:
             - name: EULA
               value: "TRUE"
+          envFrom:
+            - configMapRef:
+                name: minecraft-bedrock-1-config
           volumeMounts:
             - name: data
               mountPath: /data
