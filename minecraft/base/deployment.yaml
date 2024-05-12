@@ -29,14 +29,13 @@ spec:
               cpu: 500m
               memory: 1Gi
           readinessProbe: &probe
+            initialDelaySeconds: 30
             exec:
               command:
                 - mc-monitor
                 - status-bedrock
                 - --host
-                # force health check against IPv4 port
                 - 127.0.0.1
-            initialDelaySeconds: 30
           livenessProbe: *probe
           tty: true
           stdin: true
