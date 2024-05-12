@@ -23,7 +23,7 @@ data:
   GAMEMODE: 'creative'
   LEVEL_TYPE: 'default'
   DIFFICULTY: 'easy'
-  LEVEL_NAME: 'My Test Server'
+  LEVEL_NAME: 'My World'
   #LEVEL_SEED: "33480944
   OPS: '2533274949710273'
   ALLOW_LIST: 'true'
