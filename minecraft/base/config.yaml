@@ -10,7 +10,7 @@ data:
   UID: '568'
   GID: '1001'
   TZ: 'Europe/London'
-  VERSION: '1.20'
+  #VERSION: '1.20'
   PACKAGE_BACKUP_KEEP: '2'
 ---
 apiVersion: v1
