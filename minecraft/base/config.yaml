@@ -2,32 +2,29 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: minecraft-bedrock-config
+  name: minecraft-bedrock-container-config
   labels:
-    app.kubernetes.io/name: minecraft-bedrock
+    app.kubernetes.io/name: minecraft-bedrock-config
 data:
   EULA: 'true'
+  UID: '568'
+  GID: '1001'
   TZ: 'Europe/London'
-  GAMEMODE: 'creative'
-  LEVEL_TYPE: 'default'
-  DIFFICULTY: 'easy'
-  LEVEL_NAME: "My Test Server"
-  #LEVEL_SEED: "33480944
-  #OPS: '2533274949710273'
-  ALLOWLIST: 'true'
-  ALLOWLIST_USERS: 'Deddy:2533274949710273'
+  VERSION: '1.20'
+  PACKAGE_BACKUP_KEEP: '2'
 ---
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: minecraft-allowlist-config
+  name: minecraft-bedrock-server-config
   labels:
-    app.kubernetes.io/name: minecraft
+    app.kubernetes.io/name: minecraft-bedrock-server-config
 data:
-  allowlist.json: |-
-    [
-      {
-        "name": "Deddy",
-        "uuid": "2533274949710273"
-      }
-    ]
+  GAMEMODE: 'creative'
+  LEVEL_TYPE: 'default'
+  DIFFICULTY: 'easy'
+  LEVEL_NAME: 'My Test Server'
+  #LEVEL_SEED: "33480944
+  OPS: '2533274949710273'
+  ALLOWLIST: 'true'
+  ALLOWLIST_USERS: 'Deddy:2533274949710273,Luna:2533274949710000'

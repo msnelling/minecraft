@@ -23,7 +23,9 @@ spec:
           imagePullPolicy: Always
           envFrom:
             - configMapRef:
-                name: minecraft-bedrock-config
+                name: minecraft-bedrock-container-config
+            - configMapRef:
+                name: minecraft-bedrock-server-config
           resources:
             requests:
               cpu: 500m
