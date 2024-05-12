@@ -46,7 +46,8 @@ spec:
             - name: data
               mountPath: /data
             - name: allowlist
-              mountPath: /data/allowlist.json
+              mountPath: /data
+              subPath: allowlist.json
       volumes:
         - name: data
           persistentVolumeClaim:
