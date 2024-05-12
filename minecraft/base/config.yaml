@@ -15,6 +15,7 @@ data:
   #LEVEL_SEED: "33480944
   #OPS: '2533274949710273'
   ALLOWLIST: 'true'
+  ALLOWLIST_USERS: 'Deddy:2533274949710273'
 ---
 apiVersion: v1
 kind: ConfigMap
