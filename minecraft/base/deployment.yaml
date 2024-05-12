@@ -6,6 +6,9 @@ metadata:
     app.kubernetes.io/name: minecraft-bedrock-1
 spec:
   replicas: 1
+  revisionHistoryLimit: 2
+  strategy:
+    type: Recreate
   selector:
     matchLabels:
       app.kubernetes.io/name: minecraft-bedrock-1
@@ -18,9 +21,6 @@ spec:
         - name: minecraft-bedrock
           image: docker.io/itzg/minecraft-bedrock-server
           imagePullPolicy: Always
-          env:
-            - name: EULA
-              value: "TRUE"
           envFrom:
             - configMapRef:
                 name: minecraft-bedrock-1-config
