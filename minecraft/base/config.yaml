@@ -1,3 +1,4 @@
+---
 apiVersion: v1
 kind: ConfigMap
 metadata:
@@ -6,6 +7,26 @@ metadata:
     app.kubernetes.io/name: minecraft-bedrock-1
 data:
   EULA: 'true'
+  TZ: 'Europe/London'
   GAMEMODE: 'creative'
   LEVEL_TYPE: 'default'
   DIFFICULTY: 'easy'
+  LEVEL_NAME: "My Test Server"
+  #LEVEL_SEED: "33480944
+  #OPS: '2533274949710273'
+  ALLOWLIST: 'true'
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: minecraft-allowlist-config
+  labels:
+    app.kubernetes.io/name: minecraft
+data:
+  allowlist.json: |-
+    [
+      {
+        "name": "Dada",
+        "uuid": "2533274949710273"
+      }
+    ]
