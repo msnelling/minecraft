@@ -10,3 +10,4 @@ spec:
   ports:
     - port: 19132
       protocol: UDP
+  type: LoadBalancer
