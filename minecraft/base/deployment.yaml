@@ -1,9 +1,9 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: minecraft-bedrock-1
+  name: minecraft-bedrock
   labels:
-    app.kubernetes.io/name: minecraft-bedrock-1
+    app.kubernetes.io/name: minecraft-bedrock
 spec:
   replicas: 1
   revisionHistoryLimit: 2
@@ -11,11 +11,11 @@ spec:
     type: Recreate
   selector:
     matchLabels:
-      app.kubernetes.io/name: minecraft-bedrock-1
+      app.kubernetes.io/name: minecraft-bedrock
   template:
     metadata:
       labels:
-        app.kubernetes.io/name: minecraft-bedrock-1
+        app.kubernetes.io/name: minecraft-bedrock
     spec:
       containers:
         - name: minecraft-bedrock
@@ -23,10 +23,13 @@ spec:
           imagePullPolicy: Always
           envFrom:
             - configMapRef:
-                name: minecraft-bedrock-1-config
+                name: minecraft-bedrock-config
           resources:
             requests:
               cpu: 500m
+              memory: 512Mi
+            limits:
+              cpu: 1
               memory: 1Gi
           readinessProbe: &probe
             initialDelaySeconds: 30
@@ -47,7 +50,7 @@ spec:
       volumes:
         - name: data
           persistentVolumeClaim:
-            claimName: minecraft-bedrock-1
+            claimName: minecraft-bedrock
         - name: allowlist
           configMap:
             name: minecraft-allowlist-config

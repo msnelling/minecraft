@@ -18,4 +18,4 @@ patches:
     target:
       version: v1
       kind: Service
-      name: minecraft-bedrock-1
+      name: minecraft-bedrock
