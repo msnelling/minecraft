@@ -22,7 +22,7 @@ minecraft-bedrock:
     kube-vip.io/loadbalancerIPs: 10.1.1.48
 
   minecraftServer:
-    EULA: "TRUE"
+    eula: "TRUE"
     difficulty: easy
     gameMode: creative
     serverName: "Test Bedrock Server"
