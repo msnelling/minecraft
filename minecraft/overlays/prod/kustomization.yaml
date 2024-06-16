@@ -15,8 +15,8 @@ patches:
         path: /metadata/annotations
         value:
           kube-vip.io/loadbalancerIPs: 10.1.1.48
-          tailscale.com/expose \"true\"
-          tailscale.com/hostname mc1
+          tailscale.com/expose: true
+          tailscale.com/hostname: mc1
     target:
       version: v1
       kind: Service
