@@ -14,7 +14,6 @@ patches:
       version: v1
       kind: PersistentVolumeClaim
       name: minecraft-bedrock-server
-      labelSelector: app.kubernetes.io/instance=mc1
     patch: |
       - op: replace
         path: /metadata/name
@@ -26,7 +25,6 @@ patches:
       version: v1
       kind: PersistentVolume
       name: minecraft-bedrock-server
-      labelSelector: app.kubernetes.io/instance=mc1
     patch: |
       - op: replace
         path: /metadata/name
@@ -37,8 +35,7 @@ patches:
   - target:
       version: v1
       kind: Service
-      name: minecraft-bedrock
-      labelSelector: app.kubernetes.io/instance=mc1
+      name: minecraft-bedrock-server
     patch: |
       - op: add
         path: /metadata/annotations
