@@ -46,6 +46,9 @@ patches:
       name: minecraft-bedrock-server
     patch: |
       - op: replace
+        path: /metadata/name
+        value: minecraft-bedrock-server-mc1
+      - op: replace
         path: /spec/selector/app.kubernetes.io~1name
         value: minecraft-bedrock-server-mc1
       - op: add
