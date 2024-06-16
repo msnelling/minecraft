@@ -4,7 +4,7 @@ kind: PersistentVolume
 metadata:
   name: minecraft-bedrock
   labels:
-    app.kubernetes.io/name: minecraft-bedrock
+    app.kubernetes.io/name: minecraft-bedrock-server
 spec:
   capacity:
     storage: 1Gi
@@ -14,19 +14,19 @@ spec:
   csi:
     driver: driver.longhorn.io
     fsType: ext4
-    volumeHandle: minecraft-bedrock
+    volumeHandle: minecraft-bedrock-server
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: minecraft-bedrock
+  name: minecraft-bedrock-server
   labels:
-    app.kubernetes.io/name: minecraft-bedrock
+    app.kubernetes.io/name: minecraft-bedrock-server
 spec:
   accessModes:
     - ReadWriteOnce
   resources:
     requests:
       storage: 1Gi
-  volumeName: minecraft-bedrock
+  volumeName: minecraft-bedrock-server
   storageClassName: longhorn-minecraft

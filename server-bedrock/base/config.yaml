@@ -4,7 +4,7 @@ kind: ConfigMap
 metadata:
   name: minecraft-bedrock-container-config
   labels:
-    app.kubernetes.io/name: minecraft-bedrock-config
+    app.kubernetes.io/name: minecraft-bedrock-server
 data:
   EULA: 'true'
   #UID: '1000'
@@ -18,13 +18,15 @@ kind: ConfigMap
 metadata:
   name: minecraft-bedrock-server-config
   labels:
-    app.kubernetes.io/name: minecraft-bedrock-server-config
+    app.kubernetes.io/name: minecraft-bedrock-server
 data:
   GAMEMODE: 'creative'
   LEVEL_TYPE: 'default'
   DIFFICULTY: 'easy'
   LEVEL_NAME: 'My World'
   #LEVEL_SEED: "33480944
-  OPS: '2533274949710273'
+  #OPS: '2533274949710273' # Deddy
+  OPS: '2535463308445170' # Luna
   ALLOW_LIST: 'true'
-  ALLOW_LIST_USERS: 'Deddy:2533274949710273,Luna:2535463308445170'
+  #ALLOW_LIST_USERS: 'Deddy:2533274949710273,Luna:2535463308445170'
+  ALLOW_LIST_USERS: 'Luna:2535463308445170'

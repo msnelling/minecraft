@@ -3,10 +3,10 @@ kind: Service
 metadata:
   name: minecraft-bedrock
   labels:
-    app.kubernetes.io/name: minecraft-bedrock
+    app.kubernetes.io/name: minecraft-bedrock-server
 spec:
   selector:
-    app.kubernetes.io/name: minecraft-bedrock
+    app.kubernetes.io/name: minecraft-bedrock-server
   ports:
     - port: 19132
       protocol: UDP
