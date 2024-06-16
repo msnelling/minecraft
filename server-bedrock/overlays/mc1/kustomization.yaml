@@ -34,6 +34,14 @@ patches:
         value: minecraft-bedrock-mc1
   - target:
       version: v1
+      kind: Deployment
+      name: minecraft-bedrock-server
+    patch: |
+      - op: replace
+        path: /metadata/name
+        value: minecraft-bedrock-server-mc1
+  - target:
+      version: v1
       kind: Service
       name: minecraft-bedrock-server
     patch: |
