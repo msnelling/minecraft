@@ -28,6 +28,13 @@ spec:
                 name: minecraft-bedrock-container-config
             - configMapRef:
                 name: minecraft-bedrock-server-config
+          ports:
+            - containerPort: 19132
+              protocol: UDP
+              name: bedrock
+            - containerPort: 19132
+              protocol: TCP
+              name: bedrock
           resources:
             requests:
               cpu: 500m
