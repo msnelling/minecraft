@@ -31,10 +31,10 @@ spec:
           ports:
             - containerPort: 19132
               protocol: UDP
-              name: bedrock
+              name: bedrock-udp
             - containerPort: 19132
               protocol: TCP
-              name: bedrock
+              name: bedrock-tcp
           resources:
             requests:
               cpu: 500m

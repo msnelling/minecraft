@@ -8,12 +8,12 @@ spec:
   selector:
     app.kubernetes.io/name: minecraft-bedrock-server
   ports:
-    - name: bedrock
+    - name: bedrock-udp
       protocol: UDP
       port: 19132
-      targetPort: bedrock
-    - name: bedrock
+      targetPort: bedrock-udp
+    - name: bedrock-tcp
       protocol: TCP
       port: 19132
-      targetPort: bedrock
+      targetPort: bedrock-tcp
   type: LoadBalancer
