@@ -45,6 +45,9 @@ patches:
       kind: Service
       name: minecraft-bedrock-server
     patch: |
+      - op: replace
+        path: /spec/selector/app.kubernetes.io~1name
+        value: minecraft-bedrock-server-mc1
       - op: add
         path: /metadata/annotations
         value:
