@@ -10,7 +10,9 @@ data:
   #UID: '1000'
   #GID: '1000'
   TZ: 'Europe/London'
-  #VERSION: '1.20'
+  VERSION: 'LATEST'
+  EMIT_SERVER_TELEMETRY: 'false'
+  ENABLE_LAN_VISIBILITY: 'true'
   PACKAGE_BACKUP_KEEP: '2'
 ---
 apiVersion: v1
