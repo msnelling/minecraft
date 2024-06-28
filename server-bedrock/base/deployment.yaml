@@ -42,15 +42,14 @@ spec:
             limits:
               cpu: 1
               memory: 1Gi
-          readinessProbe: &probe
-            initialDelaySeconds: 60
+          livenessProbe:
+            initialDelaySeconds: 120
             exec:
               command:
                 - mc-monitor
                 - status-bedrock
                 - --host
                 - 127.0.0.1
-          livenessProbe: *probe
           tty: true
           stdin: true
           volumeMounts:
