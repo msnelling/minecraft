@@ -3,7 +3,7 @@ kind: Kustomization
 labels:
   - includeSelectors: true
     pairs:
-      app.kubernetes.io/instance: mc1
+      app.kubernetes.io/instance: mc2
 images:
   - name: docker.io/itzg/minecraft-bedrock-server
     newTag: latest
@@ -16,7 +16,8 @@ configMapGenerator:
       - GAMEMODE='creative'
       - LEVEL_TYPE='default'
       - DIFFICULTY='easy'
-      - LEVEL_NAME='My World'
+      - LEVEL_NAME='My Empty World'
+      - LEVEL_SEED='7794572526148668328'
       - OPS='2533274949710273'
       - ALLOW_LIST='true'
       - ALLOW_LIST_USERS='Deddy:2533274949710273,Luna:2535463308445170'
@@ -28,10 +29,10 @@ patches:
     patch: |
       - op: replace
         path: /metadata/name
-        value: minecraft-bedrock-server-mc1
+        value: minecraft-bedrock-server-mc2
       - op: replace
         path: /spec/volumeName
-        value: minecraft-bedrock-server-mc1
+        value: minecraft-bedrock-server-mc2
   - target:
       version: v1
       kind: PersistentVolume
@@ -39,10 +40,10 @@ patches:
     patch: |
       - op: replace
         path: /metadata/name
-        value: minecraft-bedrock-server-mc1
+        value: minecraft-bedrock-server-mc2
       - op: replace
         path: /spec/csi/volumeHandle
-        value: minecraft-bedrock-mc1
+        value: minecraft-bedrock-mc2
   - target:
       version: v1
       kind: Deployment
@@ -50,7 +51,7 @@ patches:
     patch: |
       - op: replace
         path: /metadata/name
-        value: minecraft-bedrock-server-mc1
+        value: minecraft-bedrock-server-mc2
   - target:
       version: v1
       kind: Service
@@ -58,11 +59,17 @@ patches:
     patch: |
       - op: replace
         path: /metadata/name
-        value: minecraft-bedrock-server-mc1
+        value: minecraft-bedrock-server-mc2
       - op: add
         path: /metadata/annotations
         value:
           kube-vip.io/loadbalancerIPs: 10.1.1.48
           tailscale.com/expose: true
           tailscale.com/tags: tag:minecraft
-          tailscale.com/hostname: mc1
+          tailscale.com/hostname: mc2
+      - op: replace
+        path: /spec/ports/0/port
+        value: 19133
+      - op: replace
+        path: /spec/ports/1/port
+        value: 19133
