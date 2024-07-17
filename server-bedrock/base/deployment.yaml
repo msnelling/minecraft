@@ -37,11 +37,11 @@ spec:
               name: bedrock-tcp
           resources:
             requests:
-              cpu: 500m
-              memory: 512Mi
+              cpu: 2
+              memory: 1Gii
             limits:
-              cpu: 1
-              memory: 1Gi
+              cpu: 4
+              memory: 2Gi
           livenessProbe:
             initialDelaySeconds: 120
             exec:
