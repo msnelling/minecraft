@@ -5,6 +5,9 @@ metadata:
   name: minecraft-server
   labels:
     app.kubernetes.io/name: minecraft-server
+  annotations:
+    lbipam.cilium.io/ips: "10.1.1.52"
+    lbipam.cilium.io/sharing-key: minecraft-lb
 spec:
   selector:
     app.kubernetes.io/name: minecraft-server
@@ -18,6 +21,7 @@ spec:
       port: 19132
       targetPort: bedrock-tcp
   type: LoadBalancer
+  loadBalancerClass: io.cilium/l2-announcer
 ---
 apiVersion: v1
 kind: Service
