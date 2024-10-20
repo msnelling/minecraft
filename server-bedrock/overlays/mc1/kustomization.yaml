@@ -79,5 +79,5 @@ patches:
         path: /metadata/name
         value: minecraft-server-ts-mc1
       - op: add
-        path: "/metadata/annotations/tailscale.com/hostname"
+        path: /metadata/annotations/tailscale.com~hostname
         value: mc1
