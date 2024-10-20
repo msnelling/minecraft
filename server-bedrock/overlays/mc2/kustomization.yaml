@@ -63,17 +63,16 @@ patches:
       - op: add
         path: /metadata/annotations
         value:
-          kube-vip.io/loadbalancerIPs: 10.1.1.48
           tailscale.com/expose: true
-          tailscale.com/tags: tag:minecraft
           tailscale.com/hostname: mc2
+          tailscale.com/tags: tag:minecraft
+      - op: add
+        path: /metadata/labels
+        value:
+          tailscale.com/proxy-class: tun-access
       - op: replace
         path: /spec/ports/0/port
         value: 19133
       - op: replace
         path: /spec/ports/1/port
         value: 19133
-      - op: add
-        path: /metadata/labels
-        value:
-          tailscale.com/proxy-class: tun-access
