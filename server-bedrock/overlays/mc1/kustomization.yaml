@@ -67,3 +67,7 @@ patches:
           tailscale.com/expose: true
           tailscale.com/tags: tag:minecraft
           tailscale.com/hostname: mc1
+      - op: add
+        path: /metadata/labels
+        value:
+          tailscale.com/proxy-class: tun-access
