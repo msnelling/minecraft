@@ -79,12 +79,5 @@ patches:
         path: /metadata/name
         value: minecraft-server-ts-mc1
       - op: add
-        path: /metadata/annotations
-        value:
-          tailscale.com/expose: true
-          tailscale.com/hostname: mc1
-          tailscale.com/tags: tag:minecraft
-      - op: add
-        path: /metadata/labels
-        value:
-          tailscale.com/proxy-class: tun-access
+        path: /metadata/annotations/tailscale.com/hostname
+        value: mc1

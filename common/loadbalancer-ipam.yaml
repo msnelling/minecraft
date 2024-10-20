@@ -8,4 +8,4 @@ spec:
     - start: "10.1.1.52"
   serviceSelector:
     matchLabels:
-      "io.kubernetes.service.namespace": "minecraft"
+      io.kubernetes.service.namespace: minecraft

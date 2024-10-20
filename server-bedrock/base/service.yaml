@@ -29,6 +29,10 @@ metadata:
   name: minecraft-server-ts
   labels:
     app.kubernetes.io/name: minecraft-server-ts
+    tailscale.com/proxy-class: tun-access
+  annotations:
+    tailscale.com/expose: "true"
+    tailscale.com/tags: tag:minecraft
 spec:
   selector:
     app.kubernetes.io/name: minecraft-server
