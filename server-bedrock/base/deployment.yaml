@@ -23,9 +23,20 @@ spec:
         - name: minecraft-server
           image: docker.io/itzg/minecraft-bedrock-server
           imagePullPolicy: Always
+          env:
+            - name: EULA
+              value: "TRUE"
+            - name: TZ
+              value: Europe/London
+            - name: VERSION
+              value: LATEST
+            - name: EMIT_SERVER_TELEMETRY
+              value: 'false'
+            - name: ENABLE_LAN_VISIBILITY
+              value: 'true'
+            - name: PACKAGE_BACKUP_KEEP
+              value: '2'
           envFrom:
-            - configMapRef:
-                name: minecraft-container-config
             - configMapRef:
                 name: minecraft-server-config
           ports:

@@ -10,18 +10,7 @@ images:
 resources:
   - ../../base
 configMapGenerator:
-  - name: minecraft-container-config
-    behavior: create
-    literals:
-      - EULA='true'
-      #- UID='1000'
-      #- GID='1000'
-      - TZ='Europe/London'
-      - VERSION='LATEST'
-      - EMIT_SERVER_TELEMETRY='false'
-      - ENABLE_LAN_VISIBILITY='true'
-      - PACKAGE_BACKUP_KEEP='2'
-  - name: minecraft-server-config
+  - name: minecraft-server-config-mc1
     behavior: create
     literals:
       - GAMEMODE='creative'
@@ -65,6 +54,9 @@ patches:
       - op: replace
         path: /metadata/name
         value: minecraft-server-mc1
+      - op: replace
+        path: /spec/template/spec/containers/0/envFrom/0/configMapRef/name
+        value: minecraft-server-config-mc1
 
   - target:
       version: v1
