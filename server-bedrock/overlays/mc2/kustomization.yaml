@@ -10,6 +10,17 @@ images:
 resources:
   - ../../base
 configMapGenerator:
+  - name: minecraft-container-config
+    behavior: create
+    literals:
+      - EULA='true'
+      #- UID='1000'
+      #- GID='1000'
+      - TZ='Europe/London'
+      - VERSION='LATEST'
+      - EMIT_SERVER_TELEMETRY='false'
+      - ENABLE_LAN_VISIBILITY='true'
+      - PACKAGE_BACKUP_KEEP='2'
   - name: minecraft-server-config
     behavior: create
     literals:
