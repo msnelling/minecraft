@@ -73,7 +73,7 @@ patches:
   - target:
       version: v1
       kind: Service
-      name: minecraft-server
+      name: minecraft-server-ts
     patch: |
       - op: replace
         path: /metadata/name
