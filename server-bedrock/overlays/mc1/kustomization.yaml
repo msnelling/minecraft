@@ -44,7 +44,7 @@ patches:
         value: minecraft-server-mc1
       - op: replace
         path: /spec/csi/volumeHandle
-        value: minecraft-mc1
+        value: minecraft-server-mc1
 
   - target:
       version: v1
