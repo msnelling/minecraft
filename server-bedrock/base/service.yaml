@@ -1,12 +1,13 @@
+---
 apiVersion: v1
 kind: Service
 metadata:
-  name: minecraft-bedrock-server
+  name: minecraft-server
   labels:
-    app.kubernetes.io/name: minecraft-bedrock-server
+    app.kubernetes.io/name: minecraft-server
 spec:
   selector:
-    app.kubernetes.io/name: minecraft-bedrock-server
+    app.kubernetes.io/name: minecraft-server
   ports:
     - name: bedrock-udp
       protocol: UDP
@@ -17,3 +18,24 @@ spec:
       port: 19132
       targetPort: bedrock-tcp
   type: LoadBalancer
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: minecraft-server-ts
+  labels:
+    app.kubernetes.io/name: minecraft-server-ts
+spec:
+  selector:
+    app.kubernetes.io/name: minecraft-server
+  ports:
+    - name: bedrock-udp
+      protocol: UDP
+      port: 19132
+      targetPort: bedrock-udp
+    - name: bedrock-tcp
+      protocol: TCP
+      port: 19132
+      targetPort: bedrock-tcp
+  type: LoadBalancer
+  loadBalancerClass: tailscale

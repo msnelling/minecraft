@@ -1,9 +1,9 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: minecraft-bedrock-container-config
+  name: minecraft-container-config
   labels:
-    app.kubernetes.io/name: minecraft-bedrock-server
+    app.kubernetes.io/name: minecraft-server
 data:
   EULA: 'true'
   #UID: '1000'

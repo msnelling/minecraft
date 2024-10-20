@@ -10,7 +10,7 @@ images:
 resources:
   - ../../base
 configMapGenerator:
-  - name: minecraft-bedrock-server-config
+  - name: minecraft-server-config
     behavior: create
     literals:
       - GAMEMODE='creative'
@@ -25,48 +25,62 @@ patches:
   - target:
       version: v1
       kind: PersistentVolumeClaim
-      name: minecraft-bedrock-server
+      name: minecraft-server
     patch: |
       - op: replace
         path: /metadata/name
-        value: minecraft-bedrock-server-mc1
+        value: minecraft-server-mc1
       - op: replace
         path: /spec/volumeName
-        value: minecraft-bedrock-server-mc1
+        value: minecraft-server-mc1
+
   - target:
       version: v1
       kind: PersistentVolume
-      name: minecraft-bedrock-server
+      name: minecraft-server
     patch: |
       - op: replace
         path: /metadata/name
-        value: minecraft-bedrock-server-mc1
+        value: minecraft-server-mc1
       - op: replace
         path: /spec/csi/volumeHandle
-        value: minecraft-bedrock-mc1
+        value: minecraft-mc1
+
   - target:
       version: v1
       kind: Deployment
-      name: minecraft-bedrock-server
+      name: minecraft-server
     patch: |
       - op: replace
         path: /metadata/name
-        value: minecraft-bedrock-server-mc1
+        value: minecraft-server-mc1
+
   - target:
       version: v1
       kind: Service
-      name: minecraft-bedrock-server
+      name: minecraft-server
     patch: |
       - op: replace
         path: /metadata/name
-        value: minecraft-bedrock-server-mc1
+        value: minecraft-server-mc1
+      - op: replace
+        path: /spec/ports/0/port
+        value: 19132
+      - op: replace
+        path: /spec/ports/1/port
+        value: 19132
+
+  - target:
+      version: v1
+      kind: Service
+      name: minecraft-server-ts
+    patch: |
+      - op: replace
+        path: /metadata/name
+        value: minecraft-server-ts-mc1
       - op: add
         path: /metadata/annotations
         value:
           tailscale.com/expose: true
           tailscale.com/hostname: mc1
           tailscale.com/tags: tag:minecraft
-      - op: add
-        path: /metadata/labels
-        value:
-          tailscale.com/proxy-class: tun-access

@@ -12,4 +12,4 @@ resources:
 generatorOptions:
   disableNameSuffixHash: false
   labels:
-    app.kubernetes.io/name: minecraft-bedrock-server
+    app.kubernetes.io/name: minecraft-server

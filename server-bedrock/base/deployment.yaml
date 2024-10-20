@@ -1,11 +1,11 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: minecraft-bedrock-server
+  name: minecraft-server
 #  annotations:
 #    reloader.stakater.com/auto: "true"
   labels:
-    app.kubernetes.io/name: minecraft-bedrock-server
+    app.kubernetes.io/name: minecraft-server
 spec:
   replicas: 1
   revisionHistoryLimit: 2
@@ -13,21 +13,21 @@ spec:
     type: Recreate
   selector:
     matchLabels:
-      app.kubernetes.io/name: minecraft-bedrock-server
+      app.kubernetes.io/name: minecraft-server
   template:
     metadata:
       labels:
-        app.kubernetes.io/name: minecraft-bedrock-server
+        app.kubernetes.io/name: minecraft-server
     spec:
       containers:
-        - name: minecraft-bedrock-server
+        - name: minecraft-server
           image: docker.io/itzg/minecraft-bedrock-server
           imagePullPolicy: Always
           envFrom:
             - configMapRef:
-                name: minecraft-bedrock-container-config
+                name: minecraft-container-config
             - configMapRef:
-                name: minecraft-bedrock-server-config
+                name: minecraft-server-config
           ports:
             - containerPort: 19132
               protocol: UDP
@@ -57,4 +57,4 @@ spec:
       volumes:
         - name: data
           persistentVolumeClaim:
-            claimName: minecraft-bedrock-server
+            claimName: minecraft-server
