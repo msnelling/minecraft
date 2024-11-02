@@ -16,7 +16,7 @@ configMapGenerator:
       - GAMEMODE='creative'
       - LEVEL_TYPE='default'
       - DIFFICULTY='easy'
-      - LEVEL_NAME='My Empty World'
+      - LEVEL_NAME='My World'
       - LEVEL_SEED='7794572526148668328'
       - OPS='2533274949710273'
       - ALLOW_LIST='true'
