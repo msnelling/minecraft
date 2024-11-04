@@ -16,10 +16,6 @@ spec:
       protocol: UDP
       port: 19132
       targetPort: bedrock-udp
-#    - name: bedrock-tcp
-#      protocol: TCP
-#      port: 19132
-#      targetPort: bedrock-tcp
   type: LoadBalancer
   loadBalancerClass: io.cilium/l2-announcer
 ---
@@ -41,9 +37,5 @@ spec:
       protocol: UDP
       port: 19132
       targetPort: bedrock-udp
-#    - name: bedrock-tcp
-#      protocol: TCP
-#      port: 19132
-#      targetPort: bedrock-tcp
   type: LoadBalancer
   loadBalancerClass: tailscale
