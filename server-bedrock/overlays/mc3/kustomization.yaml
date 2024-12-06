@@ -1,0 +1,82 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+labels:
+  - includeSelectors: true
+    pairs:
+      app.kubernetes.io/instance: mc3
+images:
+  - name: docker.io/itzg/minecraft-bedrock-server
+    newTag: latest
+resources:
+  - ../../base
+configMapGenerator:
+  - name: minecraft-server-config-mc3
+    behavior: create
+    literals:
+      - GAMEMODE='survival'
+      - LEVEL_TYPE='default'
+      - DIFFICULTY='easy'
+      - LEVEL_NAME='My World'
+      - OPS='2533274949710273'
+      - ALLOW_LIST='true'
+      - ALLOW_LIST_USERS='Deddy:2533274949710273,Luna:2535463308445170'
+patches:
+  - target:
+      version: v1
+      kind: PersistentVolumeClaim
+      name: minecraft-server
+    patch: |
+      - op: replace
+        path: /metadata/name
+        value: minecraft-server-mc3
+      - op: replace
+        path: /spec/volumeName
+        value: minecraft-server-mc3
+
+  - target:
+      version: v1
+      kind: PersistentVolume
+      name: minecraft-server
+    patch: |
+      - op: replace
+        path: /metadata/name
+        value: minecraft-server-mc3
+      - op: replace
+        path: /spec/csi/volumeHandle
+        value: minecraft-server-mc3
+
+  - target:
+      version: v1
+      kind: Deployment
+      name: minecraft-server
+    patch: |
+      - op: replace
+        path: /metadata/name
+        value: minecraft-server-mc3
+      - op: replace
+        path: /spec/template/spec/containers/0/envFrom/0/configMapRef/name
+        value: minecraft-server-config-mc3
+
+  - target:
+      version: v1
+      kind: Service
+      name: minecraft-server
+    patch: |
+      - op: replace
+        path: /metadata/name
+        value: minecraft-server-mc3
+      - op: replace
+        path: /spec/ports/0/port
+        value: 19134
+
+  - target:
+      version: v1
+      kind: Service
+      name: minecraft-server-ts
+    patch: |
+      - op: replace
+        path: /metadata/name
+        value: minecraft-server-ts-mc3
+      - op: add
+        path: /metadata/annotations/tailscale.com~1hostname
+        value: mc3

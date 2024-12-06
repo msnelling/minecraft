@@ -1,0 +1,23 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: minecraft-mc3
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: applications
+  destination:
+    namespace: minecraft
+    server: {{ .Values.spec.destination.server }}
+  source:
+    path: server-bedrock/overlays/mc3
+    repoURL: {{ .Values.spec.source.repoURL }}
+    targetRevision: {{ .Values.spec.source.targetRevision }}
+  syncPolicy:
+    automated:
+      prune: true
+      allowEmpty: true
+      selfHeal: false
+    syncOptions:
+      - CreateNamespace=true
