@@ -69,6 +69,9 @@ patches:
       - op: replace
         path: /spec/ports/0/port
         value: 19132
+      - op: replace
+        path: /spec/ports/1/port
+        value: 19132
 
   - target:
       version: v1

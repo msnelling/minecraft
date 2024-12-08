@@ -6,12 +6,15 @@ metadata:
   labels:
     app.kubernetes.io/name: minecraft-server
   annotations:
-    lbipam.cilium.io/ips: "10.1.1.52"
     lbipam.cilium.io/sharing-key: minecraft-lb
 spec:
   selector:
     app.kubernetes.io/name: minecraft-server
   ports:
+    - name: bedrock-tcp
+      protocol: UDP
+      port: 19132
+      targetPort: bedrock-tcp
     - name: bedrock-udp
       protocol: UDP
       port: 19132
@@ -33,6 +36,10 @@ spec:
   selector:
     app.kubernetes.io/name: minecraft-server
   ports:
+    - name: bedrock-tcp
+      protocol: UDP
+      port: 19132
+      targetPort: bedrock-tcp
     - name: bedrock-udp
       protocol: UDP
       port: 19132
