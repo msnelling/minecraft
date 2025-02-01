@@ -17,6 +17,7 @@ configMapGenerator:
       - LEVEL_TYPE='default'
       - DIFFICULTY='easy'
       - LEVEL_NAME='My World'
+      - LEVEL_SEED='2059666523504992'
       - OPS='2533274949710273'
       - ALLOW_LIST='true'
       - ALLOW_LIST_USERS='Deddy:2533274949710273,Luna:2535463308445170'
