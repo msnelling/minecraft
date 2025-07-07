@@ -14,6 +14,8 @@ configMapGenerator:
     behavior: create
     literals:
       - SERVER_NAME='My World 2'
+      - SERVER_PORT='19133'
+      - SERVER_PORT_V6='19133'
       - GAMEMODE='creative'
       - LEVEL_TYPE='default'
       - DIFFICULTY='easy'
