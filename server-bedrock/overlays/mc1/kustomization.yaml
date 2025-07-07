@@ -13,7 +13,7 @@ configMapGenerator:
   - name: minecraft-server-config-mc1
     behavior: create
     literals:
-      - SERVER_NAME='My World 2'
+      - SERVER_NAME='My World 1'
       - GAMEMODE='creative'
       - LEVEL_TYPE='default'
       - DIFFICULTY='easy'
@@ -58,6 +58,12 @@ patches:
       - op: replace
         path: /spec/template/spec/containers/0/envFrom/0/configMapRef/name
         value: minecraft-server-config-mc1
+      - op: replace
+        path: /spec/template/spec/containers/0/ports/0/containerPort
+        value: 19132
+      - op: replace
+        path: /spec/template/spec/containers/0/ports/1/containerPort
+        value: 19132
 
   - target:
       version: v1
