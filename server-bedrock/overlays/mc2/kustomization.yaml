@@ -14,7 +14,7 @@ configMapGenerator:
     behavior: create
     literals:
       - SERVER_NAME='My World 2'
-      - SERVER_PORT='19133'
+      - SERVER_PORT='19232'
       - SERVER_PORT_V6='19133'
       - GAMEMODE='creative'
       - LEVEL_TYPE='default'
@@ -62,10 +62,10 @@ patches:
         value: minecraft-server-config-mc2
       - op: replace
         path: /spec/template/spec/containers/0/ports/0/containerPort
-        value: 19133
+        value: 19232
       - op: replace
         path: /spec/template/spec/containers/0/ports/1/containerPort
-        value: 19133
+        value: 19232
 
   - target:
       version: v1

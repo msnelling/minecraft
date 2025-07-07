@@ -14,8 +14,8 @@ configMapGenerator:
     behavior: create
     literals:
       - SERVER_NAME='Survival!'
-      - SERVER_PORT='19134'
-      - SERVER_PORT_V6='19134'
+      - SERVER_PORT='19332'
+      - SERVER_PORT_V6='19333'
       - GAMEMODE='survival'
       - LEVEL_TYPE='default'
       - DIFFICULTY='easy'
@@ -62,10 +62,10 @@ patches:
         value: minecraft-server-config-mc3
       - op: replace
         path: /spec/template/spec/containers/0/ports/0/containerPort
-        value: 19134
+        value: 19332
       - op: replace
         path: /spec/template/spec/containers/0/ports/1/containerPort
-        value: 19134
+        value: 19332
 
   - target:
       version: v1
