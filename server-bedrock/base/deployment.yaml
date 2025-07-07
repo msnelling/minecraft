@@ -65,9 +65,9 @@ spec:
           volumeMounts:
             - name: data
               mountPath: /data
-          hostNetwork: true
-          extraPodSpec:
-            hostNetwork: "{{ .Values.hostNetwork }}"
+      hostNetwork: true
+      extraPodSpec:
+        hostNetwork: "{{ .Values.hostNetwork }}"
       volumes:
         - name: data
           persistentVolumeClaim:
