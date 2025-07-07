@@ -13,10 +13,11 @@ configMapGenerator:
   - name: minecraft-server-config-mc1
     behavior: create
     literals:
+      - SERVER_NAME='My World 2'
       - GAMEMODE='creative'
       - LEVEL_TYPE='default'
       - DIFFICULTY='easy'
-      - LEVEL_NAME='My World 1'
+      - LEVEL_NAME='My World'
       - LEVEL_SEED='7794572526148668328'
       - OPS='2533274949710273'
       - ALLOW_LIST='true'

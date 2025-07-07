@@ -13,10 +13,11 @@ configMapGenerator:
   - name: minecraft-server-config-mc3
     behavior: create
     literals:
+      - SERVER_NAME='Survival!'
       - GAMEMODE='survival'
       - LEVEL_TYPE='default'
       - DIFFICULTY='easy'
-      - LEVEL_NAME='Survival World'
+      - LEVEL_NAME='My World'
       - LEVEL_SEED='2059666523504992'
       - OPS='2533274949710273'
       - ALLOW_LIST='true'
