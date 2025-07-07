@@ -80,8 +80,10 @@ patches:
                 ports:
                   - name: bedrock-udp
                     containerPort: 19232
+                    protocol: UDP
                   - name: bedrock-tcp
                     containerPort: 19232
+                    protocol: TCP
 
   - target:
       version: v1
@@ -99,9 +101,11 @@ patches:
           - name: bedrock-udp
             port: 19133
             targetPort: bedrock-udp
+            protocol: UDP
           - name: bedrock-tcp
             port: 19133
             targetPort: bedrock-tcp
+            protocol: TCP
 
   - target:
       version: v1
