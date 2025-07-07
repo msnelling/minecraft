@@ -16,7 +16,7 @@ configMapGenerator:
       - GAMEMODE='survival'
       - LEVEL_TYPE='default'
       - DIFFICULTY='easy'
-      - LEVEL_NAME='My World'
+      - LEVEL_NAME='Survival World'
       - LEVEL_SEED='2059666523504992'
       - OPS='2533274949710273'
       - ALLOW_LIST='true'
@@ -57,6 +57,12 @@ patches:
       - op: replace
         path: /spec/template/spec/containers/0/envFrom/0/configMapRef/name
         value: minecraft-server-config-mc3
+      - op: replace
+        path: /spec/template/spec/containers/0/ports/0/containerPort
+        value: 19134
+      - op: replace
+        path: /spec/template/spec/containers/0/ports/1/containerPort
+        value: 19134
 
   - target:
       version: v1
