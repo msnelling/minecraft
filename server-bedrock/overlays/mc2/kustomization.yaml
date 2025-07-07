@@ -77,6 +77,7 @@ patches:
                 envFrom:
                   - configMapRef:
                       name: minecraft-server-config-mc2
+                $patch: replace
                 ports:
                   - name: bedrock-udp
                     containerPort: 19232
@@ -97,15 +98,16 @@ patches:
       metadata:
         name: minecraft-server-mc2
       spec:
+        $patch: replace
         ports:
-          - name: bedrock-udp
-            port: 19133
-            targetPort: bedrock-udp
-            protocol: UDP
           - name: bedrock-tcp
+            protocol: TCP
             port: 19133
             targetPort: bedrock-tcp
-            protocol: TCP
+          - name: bedrock-udp
+            protocol: UDP
+            port: 19133
+            targetPort: bedrock-udp
 
   - target:
       version: v1
