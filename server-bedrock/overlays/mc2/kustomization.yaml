@@ -15,14 +15,13 @@ configMapGenerator:
     options:
       disableNameSuffixHash: true
     literals:
-      - SERVER_NAME='My World 2'
+      - SERVER_NAME='Deddy'
       - SERVER_PORT='19232'
       - SERVER_PORT_V6='19233'
       - GAMEMODE='creative'
       - LEVEL_TYPE='default'
       - DIFFICULTY='easy'
-      - LEVEL_NAME='My World'
-      #- LEVEL_SEED='7794572526148668328'
+      - LEVEL_NAME='My World 2'
       - OPS='2533274949710273'
       - ALLOW_LIST='true'
       - ALLOW_LIST_USERS='Deddy:2533274949710273,Luna:2535463308445170'
@@ -74,18 +73,32 @@ patches:
           spec:
             containers:
               - name: minecraft-server
-                $patch: merge
                 envFrom:
                   - configMapRef:
                       name: minecraft-server-config-mc2
+
+  - target:
+      version: v1
+      kind: Deployment
+      name: minecraft-server
+    patch: |-
+      apiVersion: apps/v1
+      kind: Deployment
+      metadata:
+        name: minecraft-server-mc2
+      spec:
+        template:
+          spec:
+            containers:
+              - name: minecraft-server
                 $patch: replace
                 ports:
-                  - name: bedrock-udp
-                    containerPort: 19232
+                  - containerPort: 19232
                     protocol: UDP
-                  - name: bedrock-tcp
-                    containerPort: 19232
+                    name: bedrock-udp
+                  - containerPort: 19232
                     protocol: TCP
+                    name: bedrock-tcp
 
   - target:
       version: v1
