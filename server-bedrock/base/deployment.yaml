@@ -4,6 +4,8 @@ metadata:
   name: minecraft-server
   labels:
     app.kubernetes.io/name: minecraft-server
+  annotations:
+    reloader.stakater.com/auto: "true"
 spec:
   replicas: 1
   revisionHistoryLimit: 2
