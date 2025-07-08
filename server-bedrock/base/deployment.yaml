@@ -65,7 +65,6 @@ spec:
           volumeMounts:
             - name: data
               mountPath: /data
-      hostNetwork: true
       volumes:
         - name: data
           persistentVolumeClaim:
