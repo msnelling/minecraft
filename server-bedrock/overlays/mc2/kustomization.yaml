@@ -57,10 +57,10 @@ patches:
     patch: |
       - op: replace
         path: /metadata/name
-        value: minecraft-server-mc3
+        value: minecraft-server-mc2
       - op: replace
         path: /spec/template/spec/containers/0/envFrom/0/configMapRef/name
-        value: minecraft-server-config-mc3
+        value: minecraft-server-config-mc2
       - op: replace
         path: /spec/template/spec/containers/0/ports/0/containerPort
         value: 19232
@@ -75,7 +75,7 @@ patches:
     patch: |
       - op: replace
         path: /metadata/name
-        value: minecraft-server-mc3
+        value: minecraft-server-mc2
       - op: replace
         path: /spec/ports/0/port
         value: 19133
