@@ -12,15 +12,16 @@ resources:
 configMapGenerator:
   - name: minecraft-server-config-mc3
     behavior: create
+    options:
+      disableNameSuffixHash: true
     literals:
-      - SERVER_NAME='Survival!'
-      - SERVER_PORT='19332'
-      - SERVER_PORT_V6='19333'
+      - SERVER_NAME='Deddy'
+      - SERVER_PORT='19132'
+      - SERVER_PORT_V6='19133'
       - GAMEMODE='survival'
       - LEVEL_TYPE='default'
       - DIFFICULTY='easy'
       - LEVEL_NAME='My World'
-      - LEVEL_SEED='2059666523504992'
       - OPS='2533274949710273'
       - ALLOW_LIST='true'
       - ALLOW_LIST_USERS='Deddy:2533274949710273,Luna:2535463308445170'
@@ -60,12 +61,6 @@ patches:
       - op: replace
         path: /spec/template/spec/containers/0/envFrom/0/configMapRef/name
         value: minecraft-server-config-mc3
-      - op: replace
-        path: /spec/template/spec/containers/0/ports/0/containerPort
-        value: 19332
-      - op: replace
-        path: /spec/template/spec/containers/0/ports/1/containerPort
-        value: 19332
 
   - target:
       version: v1
