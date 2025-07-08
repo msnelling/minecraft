@@ -23,13 +23,13 @@ spec:
           imagePullPolicy: Always
           env:
             - name: EULA
-              value: "TRUE"
+              value: "true"
             - name: TZ
               value: Europe/London
             - name: VERSION
               value: LATEST
             - name: EMIT_SERVER_TELEMETRY
-              value: 'false'
+              value: 'true'
             - name: ENABLE_LAN_VISIBILITY
               value: 'true'
             - name: PACKAGE_BACKUP_KEEP

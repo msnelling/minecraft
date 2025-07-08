@@ -74,6 +74,7 @@ patches:
           spec:
             containers:
               - name: minecraft-server
+                $patch: merge
                 envFrom:
                   - configMapRef:
                       name: minecraft-server-config-mc2

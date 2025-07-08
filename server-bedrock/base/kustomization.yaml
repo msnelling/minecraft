@@ -9,6 +9,5 @@ resources:
   - deployment.yaml
   - service.yaml
 generatorOptions:
-  disableNameSuffixHash: false
   labels:
     app.kubernetes.io/name: minecraft-server
