@@ -30,109 +30,67 @@ patches:
       version: v1
       kind: PersistentVolumeClaim
       name: minecraft-server
-    options:
-      allowNameChange: true
-    patch: |-
-      apiVersion: v1
-      kind: PersistentVolumeClaim
-      metadata:
-        name: minecraft-server-mc2
-      spec:
-        volumeName: minecraft-server-mc2
+    patch: |
+      - op: replace
+        path: /metadata/name
+        value: minecraft-server-mc2
+      - op: replace
+        path: /spec/volumeName
+        value: minecraft-server-mc2
 
   - target:
       version: v1
       kind: PersistentVolume
       name: minecraft-server
-    options:
-      allowNameChange: true
-    patch: |-
-      apiVersion: v1
-      kind: PersistentVolume
-      metadata:
-        name: minecraft-server-mc2
-      spec:
-        csi:
-          volumeHandle: minecraft-server-mc2
+    patch: |
+      - op: replace
+        path: /metadata/name
+        value: minecraft-server-mc2
+      - op: replace
+        path: /spec/csi/volumeHandle
+        value: minecraft-server-mc2
 
   - target:
       version: v1
       kind: Deployment
       name: minecraft-server
-    options:
-      allowNameChange: true
-    patch: |-
-      apiVersion: apps/v1
-      kind: Deployment
-      metadata:
-        name: minecraft-server-mc2
-        annotations:
-          reloader.stakater.com/auto: "true"
-      spec:
-        template:
-          spec:
-            containers:
-              - name: minecraft-server
-                envFrom:
-                  - configMapRef:
-                      name: minecraft-server-config-mc2
-
-  - target:
-      version: v1
-      kind: Deployment
-      name: minecraft-server
-    patch: |-
-      apiVersion: apps/v1
-      kind: Deployment
-      metadata:
-        name: minecraft-server-mc2
-      spec:
-        template:
-          spec:
-            containers:
-              - name: minecraft-server
-                $patch: replace
-                ports:
-                  - containerPort: 19232
-                    protocol: UDP
-                    name: bedrock-udp
-                  - containerPort: 19232
-                    protocol: TCP
-                    name: bedrock-tcp
+    patch: |
+      - op: replace
+        path: /metadata/name
+        value: minecraft-server-mc3
+      - op: replace
+        path: /spec/template/spec/containers/0/envFrom/0/configMapRef/name
+        value: minecraft-server-config-mc3
+      - op: replace
+        path: /spec/template/spec/containers/0/ports/0/containerPort
+        value: 19232
+      - op: replace
+        path: /spec/template/spec/containers/0/ports/1/containerPort
+        value: 19232
 
   - target:
       version: v1
       kind: Service
       name: minecraft-server
-    options:
-      allowNameChange: true
-    patch: |-
-      apiVersion: v1
-      kind: Service
-      metadata:
-        name: minecraft-server-mc2
-      spec:
-        $patch: replace
-        ports:
-          - name: bedrock-tcp
-            protocol: TCP
-            port: 19133
-            targetPort: bedrock-tcp
-          - name: bedrock-udp
-            protocol: UDP
-            port: 19133
-            targetPort: bedrock-udp
+    patch: |
+      - op: replace
+        path: /metadata/name
+        value: minecraft-server-mc3
+      - op: replace
+        path: /spec/ports/0/port
+        value: 19133
+      - op: replace
+        path: /spec/ports/1/port
+        value: 19133
 
   - target:
       version: v1
       kind: Service
       name: minecraft-server-ts
-    options:
-      allowNameChange: true
-    patch: |-
-      apiVersion: v1
-      kind: Service
-      metadata:
-        name: minecraft-server-ts-mc2
-        annotations:
-          tailscale.com/hostname: mc2
+    patch: |
+      - op: replace
+        path: /metadata/name
+        value: minecraft-server-ts-mc2
+      - op: add
+        path: /metadata/annotations/tailscale.com~1hostname
+        value: mc2
